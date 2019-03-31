@@ -1,0 +1,22 @@
+<table id="table_id" class="display">
+  <thead>
+  <th>Titre</th>
+  <th>Description</th>
+  <th>Montant</th>
+  <th>Catégorie</th>
+  <th>In/Out</th>
+  <th>Date création</th>
+  </thead>
+  <tbody>
+  <tr *ngFor="let transaction of transactionsList">
+    <td>{{ transaction.title }}</td>
+    <td>{{ transaction.description }}</td>
+    <td>{{ transaction.amount }}</td>
+    <td>{{ transaction.category }}</td>
+    <td>{{transaction.isInput}}</td>
+    <td>{{ transaction.createdAt}}</td>
+  </tr>
+
+  </tbody>
+</table>
+

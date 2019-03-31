@@ -1,0 +1,18 @@
+
+  <!-- Example row of columns -->
+  <div class="row">
+    <div class="col-md-4">
+      <h2>Nb des Transactions</h2>
+      <p><span id="nbTransaction" style="color: blue">{{statisticTransactions.recordsTotal}}</span> Transaction(s).</p>
+    </div>
+    <div class="col-md-4">
+      <h2>Somme du mois</h2>
+      <p>IN (<span id="inValue" style="color: green">{{statisticTransactions.transactionInValue}}</span> €) / OUT (<span id="outValue" style="color: red">{{statisticTransactions.transactionOutValue}}</span> €) . </p>
+    </div>
+    <div class="col-md-4">
+      <h2>Montant de la trésorerie</h2>
+      <p>DEBUT (<span id="startMonth" style="color: grey">{{statisticTransactions.amountStartMonth}}</span> €) / FIN (<span id="endMonth" style="color: grey">{{statisticTransactions.amountEndMonth}}</span> €) . </p>
+    </div>
+  </div>
+
+  <hr>
