@@ -1,3 +1,4 @@
+<!--
 <table id="table_id" class="display">
   <thead>
   <th>Titre</th>
@@ -19,4 +20,29 @@
 
   </tbody>
 </table>
+-->
+
+<table id="myTable" class="row-border hover">
+  <thead>
+  <tr>
+    <th>Titre</th>
+    <th>Description</th>
+    <th>Montant</th>
+    <th>Catégorie</th>
+    <th>In/Out</th>
+    <th>Date création</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let transaction of transactionsList">
+    <td>{{ transaction[0] }}</td>
+    <td>{{ transaction[1] }}</td>
+    <td>{{ transaction[2] }}</td>
+    <td>{{ transaction[3] }}</td>
+    <td>{{transaction[4]}}</td>
+    <td>{{ transaction[5]}}</td>
+  </tr>
+  </tbody>
+</table>
+
 

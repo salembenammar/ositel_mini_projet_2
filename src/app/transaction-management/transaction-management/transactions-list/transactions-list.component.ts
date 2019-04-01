@@ -22,8 +22,7 @@ export class TransactionsListComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    $('#table_id').DataTable().destroy();
-    $('#table_id').DataTable();
+
   }
 
 

@@ -14,9 +14,7 @@ import {DataTablesModule} from 'angular-datatables';
   imports: [
     BrowserModule,
     SharedModule,
-    TransactionManagementModule,
-    DataTablesModule
-
+    TransactionManagementModule
   ],
   providers: [],
   bootstrap: [AppComponent]

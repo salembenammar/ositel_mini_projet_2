@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {MainService} from '../../shared/services/main.service';
 
 @Component({
   selector: 'app-transaction-management',
@@ -9,60 +10,42 @@ export class TransactionManagementComponent implements OnInit {
   statisticTransactions: any = {};
   transactionsList: Object[];
 
-  constructor() {
+  constructor(private mainService: MainService) {
   }
 
   selectMonth(selectedMonth) {
-
-    /*
-        let data = {
-          'draw': 1,
-          'recordsTotal': 2,
-          'recordsFiltered': 2,
-          'transactionInValue': 122,
-          'transactionOutValue': 100,
-          'amountStartMonth': 0,
-          'amountEndMonth': 22,
-          'data': []
-        };
-    */
-
-    this.statisticTransactions = {
-      'recordsTotal': 2,
-      'transactionInValue': 122,
-      'transactionOutValue': 100,
-      'amountStartMonth': 0,
-      'amountEndMonth': 22,
-    };
-
-    this.transactionsList = [
-      {
-        titre: 'salem',
-        description: 'test',
-        montant: '122 \u20ac',
-        category: 'Category 2',
-        stock: 'IN',
-        creation_date: '31-03-2019'
-      },
-      {
-        titre: 'salem',
-        description: 'test',
-        montant: '122 \u20ac',
-        category: 'Category 2',
-        isInput: 'IN',
-        createdAt: '31-03-2019'
-      },
-    ];
-    console.log('selectedMonth===>', selectedMonth);
-    if (selectedMonth === '2') {
-      this.statisticTransactions.recordsTotal = 8;
-      console.log('this.statisticTransactions.recordsTotal', this.statisticTransactions.recordsTotal);
-    } else {
-      this.statisticTransactions.recordsTotal = 0;
-    }
+    this.getTransactionsByMonth(selectedMonth);
   }
 
   ngOnInit() {
+    this.getTransactionsByMonth(1);
   }
+
+  getTransactionsByMonth(month) {
+    /*this.statisticTransactions = {
+
+    };
+    this.transactionsList = [
+
+      ];
+    } else {
+      this.statisticTransactions.recordsTotal = 0;
+    }
+*/
+    this.mainService.getTransactions(month).subscribe((result: any) => {
+      this.statisticTransactions.recordsTotal = result.recordsTotal;
+      this.statisticTransactions.recordsFiltered = result.recordsFiltered;
+      this.statisticTransactions.transactionInValue = result.transactionInValue;
+      this.statisticTransactions.transactionOutValue = result.transactionOutValue;
+      this.statisticTransactions.amountStartMonth = result.amountStartMonth;
+      this.statisticTransactions.amountEndMonth = result.amountEndMonth;
+      this.transactionsList = result.data;
+      $('#myTable').DataTable().clear();
+      $('#myTable').DataTable();
+    }, error => {
+      console.log('error', error);
+    });
+  }
+
 
 }

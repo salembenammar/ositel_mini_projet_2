@@ -4,11 +4,13 @@ import {TransactionManagementComponent} from './transaction-management/transacti
 import {TransactionsMonthComponent} from './transaction-management/transactions-month/transactions-month.component';
 import {TransactionsStatisticsComponent} from './transaction-management/transactions-statistics/transactions-statistics.component';
 import {TransactionsListComponent} from './transaction-management/transactions-list/transactions-list.component';
+import {DataTablesModule} from 'angular-datatables';
 
 @NgModule({
   declarations: [TransactionManagementComponent, TransactionsMonthComponent, TransactionsStatisticsComponent, TransactionsListComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    DataTablesModule
   ],
   exports: [TransactionManagementComponent]
 })
